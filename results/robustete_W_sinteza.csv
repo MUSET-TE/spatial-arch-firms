@@ -1,0 +1,6 @@
+W,vecini_medii,izolate,muchii,ani_estimati,rho_mediu,ani_semnif_moran,rho_in_anii_moran
+Delaunay,5.95,0,1981,16,0.134,7,0.202
+Gabriel,3.93,0,1308,16,0.112,7,0.199
+k = 4,5.13,0,1707,16,0.118,8,0.191
+k = 5,6.26,0,2086,16,0.129,7,0.225
+k = 8,9.78,0,3257,16,0.174,6,0.267

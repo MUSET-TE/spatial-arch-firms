@@ -1,0 +1,16 @@
+out/
+data/
+geo/
+log/
+*.RData
+*.Rhistory
+.Rproj.user/
+.Rproj.user
+*.rds
+*.gpkg
+*.geojson
+*.shp
+*.docx
+*.pdf
+~$*
+.DS_Store
