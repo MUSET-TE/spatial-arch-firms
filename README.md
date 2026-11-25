@@ -35,51 +35,49 @@ The aggregated locality-year series produced by `03_spatial_data.R` are derived 
 the register and are therefore subject to the same restriction. They are available
 from the corresponding author on reasonable request.
 
+## Repository layout
+
+The code is organised as eight Quantlets, one folder each, following the convention
+of the [QuantLet](https://quantlet.com) organisation. Every folder holds the code
+that produces one part of the paper, the estimation output behind it and a
+`Metainfo.txt` describing it.
+
+| Quantlet | Contents | Where it appears in the paper |
+| --- | --- | --- |
+| `SARCHfirms_data` | `03_spatial_data.R`. Aggregates the register to locality level, matches it to the LAU geometry and builds the weight matrices for both lattices | Data section, construction of the 3,152 and 666 lattices |
+| `SARCHfirms_moran_screening` | `05_diagnostic_spatial.R`. Moran screening of candidate outcome variables on levels and on squares | Data section, why labour productivity and not turnover growth |
+| `SARCHfirms_estimation` | `08_sparch_fe.R`, the main estimation on two-way fixed effect residuals, with `06_sparch_productivitate.R` before filtering and `11_logsparch_fe.R` for the log form | **Table 1**, plus the functional form exercise |
+| `SARCHfirms_sectoral` | `13_confuzie_sectoriala.R`. Geographic against sectoral neighbourhood, plus shocks orthogonalised on sectoral composition | **Table 2**, first three rows |
+| `SARCHfirms_full_lattice` | `18_moran_retea_completa.R` on the full 3,152 locality lattice and `22_full_lattice_test.R`, the attempt to estimate on it | **Table 2**, last two rows, and the feasibility statement, no convergence after 3 hours against 84 seconds on the reduced lattice |
+| `SARCHfirms_inference` | `07_verificare_estimator.R` and `16_verificare_n666.R`. Monte Carlo on the estimator, on the lattice actually used | Inference section, 18 per cent rejection at a nominal 5 per cent under the empirical distribution against 2 per cent under normality |
+| `SARCHfirms_robustness` | `26_robustete_rapid.R`, the model under 5 neighbourhood definitions and 16 years each, and `30_selectie_W.R`, likelihood-based selection among them | **Table 3**, and the likelihood ranking reported as a non-result, the total log-likelihood spans less than 10 points out of roughly 9,300 |
+| `SARCHfirms_figure` | `23_figura_retea.R`. Builds the two panel map of the lattices | **Figure 1** |
+
+The numbering of the scripts follows the working project and is not consecutive.
+Scripts that produce internal reports or that assemble the manuscript are not
+included here.
+
+The CSV files shipped inside each folder are the estimation output behind the tables
+and the figure, so the numbers in the paper can be checked without access to the
+register. These are model results, not data: 5 to 180 rows of year-level or
+weight-matrix-level estimates, with no locality identifiers.
+
 ## Running the code
 
-Edit `00_config.R`, or export the four environment variables it reads, so that `REG`
-points to the register files, `GEO` to the geometry and `OUT` to a writable output
-folder. Nothing else in the code is machine specific.
+Edit `00_config.R` in the repository root, or export the four environment variables
+it reads, so that `REG` points to the register files, `GEO` to the geometry and `OUT`
+to a writable output folder. Nothing else in the code is machine specific. Each
+script finds the config on its own, so it can be run either from the repository root
+or from inside its own folder.
 
-Run `03_spatial_data.R` first. It writes `panel_uat.rds` and `spatial_weights.rds`,
-which every other script reads. After that the scripts are independent of one another
-and can be run in any order.
+Run `SARCHfirms_data/03_spatial_data.R` first. It writes `panel_uat.rds` and
+`spatial_weights.rds`, which every other script reads. After that the Quantlets are
+independent of one another and can be run in any order.
 
 Two scripts are slow. `26_robustete_rapid.R` performs 80 estimations and takes about
 an hour. `30_selectie_W.R` uses a parallel cluster and takes longer still. Both write
 their results incrementally, so a run that is interrupted does not lose the work
 already done.
-
-## What each script does
-
-| Script | Purpose | Where it appears in the paper |
-| --- | --- | --- |
-| `03_spatial_data.R` | Aggregates the register to locality level, matches it to the LAU geometry and builds the weight matrices for both lattices | Data section, construction of the 3,152 and 666 lattices |
-| `05_diagnostic_spatial.R` | Moran screening of candidate outcome variables on levels and on squares | Data section, why labour productivity and not turnover growth |
-| `06_sparch_productivitate.R` | spARCH and SARspARCH on raw productivity, before fixed effects are removed | Shows the spatial autoregressive term in the mean before filtering |
-| `07_verificare_estimator.R` | Monte Carlo on the estimator, known rho recovered under normal and under empirical errors | Inference section, 18 per cent rejection at a nominal 5 per cent under the empirical distribution against 2 per cent under normality |
-| `08_sparch_fe.R` | Main estimation. spARCH and SARspARCH on two-way fixed effect residuals, 16 annual cross sections | **Table 1** |
-| `11_logsparch_fe.R` | Log form of the variance equation, AIC comparison against the linear form | Functional form exercise |
-| `13_confuzie_sectoriala.R` | Geographic against sectoral neighbourhood, plus shocks orthogonalised on sectoral composition | **Table 2**, first three rows |
-| `16_verificare_n666.R` | Size and power of the estimator on the lattice actually used, not on a smaller one | Inference section |
-| `18_moran_retea_completa.R` | Moran's I on the full 3,152 locality lattice, for comparison with the reduced one | **Table 2**, last two rows |
-| `22_full_lattice_test.R` | Attempt to estimate the model on the full lattice, with sparse matrices and warm starts | Feasibility statement, no convergence after 3 hours against 84 seconds on the reduced lattice |
-| `23_figura_retea.R` | Builds the two panel map of the lattices | **Figure 1** |
-| `26_robustete_rapid.R` | The model under 5 neighbourhood definitions, 16 years each | **Table 3** |
-| `30_selectie_W.R` | Likelihood-based selection among the weight definitions | Reported as a non-result, the total log-likelihood spans less than 10 points out of roughly 9,300 |
-
-The numbering follows the working project and is not consecutive. Scripts that
-produce internal reports or that assemble the manuscript are not included here.
-
-## results/
-
-The estimation output behind the tables and the figure, so the numbers in the paper
-can be checked without access to the register. These are model results, not data.
-
-`sparch_fe_p50_k5.csv` and `tabel_master_articol.csv` back Table 1,
-`confuzie_sectoriala.csv` and `moran_retea_completa.csv` back Table 2,
-`robustete_W.csv` with its summary backs Table 3 and `Figure1_lattice.png` is the
-figure as it appears in the paper.
 
 ## Requirements
 

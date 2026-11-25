@@ -9,7 +9,7 @@ suppressPackageStartupMessages({
   library(data.table); library(sf); library(spdep); library(Matrix); library(spGARCH)
 })
 options(datatable.showProgress = FALSE)
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 a_    <- commandArgs(trailingOnly = TRUE)
 PRAG  <- if (length(a_) >= 1) as.integer(a_[1]) else 50L
 KNN   <- if (length(a_) >= 2) as.integer(a_[2]) else 5L

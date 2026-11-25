@@ -7,7 +7,7 @@
 suppressPackageStartupMessages({
   library(data.table); library(sf); library(spdep); library(Matrix); library(spGARCH)
 })
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 FIS <- file.path(OUT, "sparch_full_lattice.csv")
 
 P <- as.data.table(readRDS(file.path(OUT, "panel_uat.rds")))

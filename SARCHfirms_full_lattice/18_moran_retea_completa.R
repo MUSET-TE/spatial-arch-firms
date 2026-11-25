@@ -3,7 +3,7 @@
 # (queen contiguity), for comparison with the lattice of 666
 # =====================================================================
 suppressPackageStartupMessages({library(data.table); library(sf); library(spdep)})
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 
 P <- readRDS(file.path(OUT, "panel_uat.rds"))
 S <- readRDS(file.path(OUT, "spatial_weights.rds"))

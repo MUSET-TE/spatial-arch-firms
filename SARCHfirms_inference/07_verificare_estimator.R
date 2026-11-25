@@ -7,7 +7,7 @@ suppressPackageStartupMessages({
   library(data.table); library(sf); library(spdep); library(Matrix); library(spGARCH)
 })
 set.seed(20260820)
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 
 P   <- readRDS(file.path(OUT, "panel_uat.rds"))
 lau <- st_read(file.path(GEO, "lau2021.gpkg"), quiet = TRUE)

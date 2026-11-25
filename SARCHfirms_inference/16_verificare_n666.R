@@ -7,7 +7,7 @@ suppressPackageStartupMessages({
   library(spGARCH); library(parallel)
 })
 set.seed(20260929)
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 REP   <- 50L
 NCORE <- 16L
 

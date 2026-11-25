@@ -6,7 +6,7 @@
 suppressPackageStartupMessages({
   library(data.table); library(sf); library(spdep); library(ggplot2)
 })
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 
 P   <- as.data.table(readRDS(file.path(OUT, "panel_uat.rds")))
 S   <- readRDS(file.path(OUT, "spatial_weights.rds"))

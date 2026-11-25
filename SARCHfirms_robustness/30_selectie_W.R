@@ -9,7 +9,7 @@ suppressPackageStartupMessages({
   library(spGARCH); library(parallel)
 })
 options(datatable.showProgress = FALSE)
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 FIS <- file.path(OUT, "selectie_W.csv")
 INC <- file.path(OUT, "selectie_W_partial.csv")
 for (f in c(FIS, INC)) if (file.exists(f)) file.remove(f)

@@ -8,7 +8,7 @@ suppressPackageStartupMessages({
   library(data.table); library(sf); library(spdep); library(Matrix)
   library(spGARCH); library(parallel)
 })
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 NCORE <- 4L
 
 P   <- readRDS(file.path(OUT, "panel_uat.rds"))

@@ -7,7 +7,7 @@ suppressPackageStartupMessages({
   library(data.table); library(sf); library(spdep)
 })
 options(datatable.showProgress = FALSE)
-source("00_config.R")
+source(if (file.exists("00_config.R")) "00_config.R" else file.path("..", "00_config.R"))
 norm <- function(x) gsub("[^a-z0-9]+", "_", tolower(trimws(x)))
 
 P   <- readRDS(file.path(OUT, "panel_uat.rds"))
