@@ -96,4 +96,10 @@ CNCS-UEFISCDI, project number PN-IV-P2-2.1-TE-2023-1317, within PNCDI IV.
 
 ## Licence
 
-MIT, see `LICENSE`.
+Academic, non-commercial use, with citation required. Two separate files, following the
+practice of the other repositories of the group:
+
+`LICENSE_CODE.txt` covers the R code. `LICENSE_DATA.txt` covers the result files
+shipped inside each Quantlet folder, which are estimation output rather than data. The
+underlying INS microdata are not in this repository and are not covered by either file,
+see the Data section above.

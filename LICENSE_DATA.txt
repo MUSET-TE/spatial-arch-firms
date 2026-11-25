@@ -1,0 +1,17 @@
+Copyright © Codruța Mare, Mihai-Adrian Achim, Gabriela-Mihaela Mureșan, 2026.
+
+The result files provided in this repository, the CSV files and the figure inside each Quantlet folder, are made available exclusively for **academic, non-commercial use**.
+
+They are estimation output, not data: year-level and weight-matrix-level model results, with no locality identifiers and no firm-level information.
+
+Use of these files in any publication, analysis, or derivative work **requires citation** of the article that describes them:
+
+* Mare, C., Achim, M.-A., Mureșan, G.-M. (2026). Spatial Effects in Local Productivity Volatility: A Non-Dynamic Spatial ARCH Analysis of Romanian Localities. Submitted to Empirical Economics.
+
+You may not modify, redistribute, or use these files for commercial purposes without explicit permission.
+
+**The underlying microdata are not in this repository and are not covered by this licence.** The firm-level records are administrative microdata provided by the National Institute of Statistics of Romania and cannot be redistributed by the authors. Access can be requested directly from the National Institute of Statistics. The aggregated locality-year series derived from them are subject to the same restriction and are available from the corresponding author on reasonable request.
+
+The administrative geometry used by the code is the Eurostat LAU 2021 layer, which is publicly available from Eurostat GISCO under its own terms of use.
+
+For permission requests, contact the corresponding author: mihai.achim@econ.ubbcluj.ro

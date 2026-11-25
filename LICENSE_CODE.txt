@@ -1,0 +1,18 @@
+Copyright © Codruța Mare, Mihai-Adrian Achim, Gabriela-Mihaela Mureșan, 2026.
+
+All code in this repository is provided solely for **academic, non-commercial use**. Any use, including reproduction, modification, or integration, must include a **formal citation** of the related scientific article:
+
+* Mare, C., Achim, M.-A., Mureșan, G.-M. (2026). Spatial Effects in Local Productivity Volatility: A Non-Dynamic Spatial ARCH Analysis of Romanian Localities. Submitted to Empirical Economics.
+
+Until the article is published, the repository itself may be cited as:
+
+* Mare, C., Achim, M.-A., Mureșan, G.-M. (2026). Spatial Effects in Local Productivity Volatility, replication code. https://github.com/MUSET-TE/spatial-arch-firms
+
+The spatial ARCH estimator used here comes from the spGARCH package of Otto (2019) and the model is that of Otto, Schmid and Garthoff (2018). Those sources carry their own licences and must be cited separately:
+
+* Otto, P. (2019). spGARCH: An R package for spatial and spatiotemporal ARCH and GARCH models. The R Journal, 11(2), 401-420. https://doi.org/10.32614/RJ-2019-053
+* Otto, P., Schmid, W., Garthoff, R. (2018). Generalised spatial and spatiotemporal autoregressive conditional heteroscedasticity. Spatial Statistics, 26, 125-145. https://doi.org/10.1016/j.spasta.2018.07.005
+
+Commercial use, redistribution, or modification of the code without prior written permission is strictly prohibited.
+
+For inquiries, contact the corresponding author: mihai.achim@econ.ubbcluj.ro
